@@ -1,0 +1,24 @@
+<div class="col-md-6">
+  <h2 class="text-center">{{formLabel}}</h2>
+  <form [formGroup]="identityForm" novalidate class="form">
+    <div class="form-group">
+      <label for="proofType">Proof Type:</label>
+      <select class="form-control" id="proofType" formControlName="proof_type" name="proofType">
+        <option value="" selected disabled>Choose here</option>
+        <option value="pancard">Pan Card</option>
+        <option value="driving licence">Driving Licence</option>
+      </select>
+      <div class="alert  alert-danger" *ngIf="identityForm.get('proof_type').hasError('required') && identityForm.get('proof_type').touched">
+        Proof Type selection is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="proofNumber">Proof Number:</label>
+      <input formControlName="proof_number" placeholder="Proof Number" name="custPhone" class="form-control" id="custPhone">
+      <div class="alert alert-danger" *ngIf="identityForm.get('proof_number').hasError('required') && identityForm.get('proof_number').touched">
+        Proof Number is required.
+      </div>
+    </div>
+    <button class="btn btn-success" [disabled]='identityForm.invalid' (click)="onSubmit()">Next</button>  
+  </form>
+</div>

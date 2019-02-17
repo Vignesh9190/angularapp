@@ -1,0 +1,42 @@
+<div class="col-md-6">
+  <h2 class="text-center">{{formLabel}}</h2>
+  <form [formGroup]="contactForm" novalidate class="form">
+    <div class="form-group">
+      <label for="custEmail">Customer Email:</label>
+      <input formControlName="email_id" placeholder="Email Id" name="custEmail" class="form-control" id="custEmail">
+      <div class="alert alert-danger" *ngIf="contactForm.get('email_id').hasError('required') && contactForm.get('email_id').touched">
+        Email is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="emailPriority">Email Priority:</label>
+      <select class="form-control" id="emailPriority" formControlName="email_priority" name="emailPriority">
+        <option value="" selected disabled>Choose here</option>
+        <option value="primary">Primary</option>
+        <option value="secondary">Secondary</option>
+      </select>
+      <div class="alert  alert-danger" *ngIf="contactForm.get('email_priority').hasError('required') && contactForm.get('email_priority').touched">
+        Priority selection is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="custPhone">Customer Phone:</label>
+      <input formControlName="phone" placeholder="Phone Number" name="custPhone" class="form-control" id="custPhone">
+      <div class="alert alert-danger" *ngIf="contactForm.get('phone').hasError('required') && contactForm.get('phone').touched">
+        Phone is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phonePriority">Phone Priority:</label>
+      <select class="form-control" id="phonePriority" formControlName="phone_priority" name="phonePriority">
+        <option value="" selected disabled>Choose here</option>
+        <option value="primary">Primary</option>
+        <option value="secondary">Secondary</option>
+      </select>
+      <div class="alert  alert-danger" *ngIf="contactForm.get('phone_priority').hasError('required') && contactForm.get('phone_priority').touched">
+        Priority selection is required.
+      </div>
+    </div>
+    <button class="btn btn-success" [disabled]='contactForm.invalid' (click)="onSubmit()">Next</button>  
+  </form>
+</div>
